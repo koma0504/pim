@@ -4,5 +4,17 @@
     "files": [
       "static/chunks/node_modules_next_dist_client_dev_noop_js.js"
     ]
+  },
+  "_app.jsx -> ../components/Cursor/Cursor": {
+    "id": "./components/Cursor/Cursor.jsx",
+    "files": [
+      "static/chunks/components_Cursor_Cursor_jsx.js"
+    ]
+  },
+  "index.jsx -> ./pixi_temp": {
+    "id": "./pages/pixi_temp.jsx",
+    "files": [
+      "static/chunks/pages_pixi_temp_jsx.js"
+    ]
   }
 }

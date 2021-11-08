@@ -12,7 +12,7 @@ export default function gallery({ gallery }) {
 	const { scroll } = useLocomotiveScroll();
 	const containerRef = useRef(null);
 	const route = useRouter();
-
+	console.log(route);
 	return (
 		<LocomotiveScrollProvider
 			options={{
@@ -24,28 +24,22 @@ export default function gallery({ gallery }) {
 		>
 			<Nav />
 			<main className="gallery" data-scroll-container ref={containerRef}>
-				<div>
-					<ul className="image_list">
-						{gallery.map((gallery) => (
-							<Link href={`/gallery/${gallery.id}`} key={gallery.id}>
-								<a className="image_item">
-									<li>
-										<Image
-											src={gallery.photo.url}
-											alt={gallery.title}
-											width={gallery.photo.width}
-											height={gallery.photo.height}
-										/>
-										{/* <div className="details">
-										<p className="title">{gallery.title}</p>
-										<p className="statement">{gallery.statement}</p>
-									</div> */}
-									</li>
-								</a>
-							</Link>
-						))}
-					</ul>
-				</div>
+				<ul className="image_list">
+					{gallery.map((gallery) => (
+						<Link href={`/gallery/${gallery.id}`} key={gallery.id}>
+							<a className="image_item">
+								<li>
+									<Image
+										src={gallery.photo.url}
+										alt={gallery.title}
+										width={gallery.photo.width}
+										height={gallery.photo.height}
+									/>
+								</li>
+							</a>
+						</Link>
+					))}
+				</ul>
 			</main>
 		</LocomotiveScrollProvider>
 	);

@@ -11,6 +11,7 @@ body {
 
 * {
 	box-sizing: border-box;
+	// cursor: none;
 }
 li,
 ul {
@@ -35,10 +36,6 @@ main.top {
 	padding: 10vh 10vw;
 
 	.slider {
-		// width: 90vw;
-		// height: 90vh;
-		// display: grid;
-		// place-items: center;
 		img {
 			object-fit: cover;
 			width: 80vw;
@@ -116,7 +113,7 @@ main.top {
 		margin: 0 0 0 9vw;
 		gap: 3vw;
 		.image_item {
-			width: 40vw;
+			min-width: 20vw;
 			.title,
 			.statement {
 				text-overflow: ellipsis;
@@ -126,10 +123,10 @@ main.top {
 			}
 
 			&:nth-child(odd) {
-				margin: 20vw 0 0 0;
+				margin: 8% 0 0 0;
 			}
 			&:nth-child(even) {
-				margin: 0 0 20vw 0;
+				margin: 0 0 8% 0;
 			}
 			img {
 				object-fit: cover;
@@ -138,11 +135,30 @@ main.top {
 	}
 }
 .detail {
-	width: 100vw;
+	width: 94vw;
 	height: 100vh;
+	margin: 0 0 0 6vw;
 	display: grid;
 	place-items: center;
-	padding: 0 10vw;
+	overflow: hidden;
+	&.beside {
+		grid-template-columns: 50% 50%;
+		direction: rtl;
+		.photo {
+			height: 100vh;
+			width: 50vw;
+		}
+	}
+	&.vertical {
+		.photo {
+			height: 50vh;
+			width: 80%;
+		}
+	}
+
+	.text {
+		padding: 4vh 4vw;
+	}
 }
 
 .cursor-dot,
@@ -155,23 +171,21 @@ main.top {
 	border-radius: 50%;
 	opacity: 1;
 	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+	z-index: 99999;
 }
 
 .cursor-dot {
 	width: 8px;
 	height: 8px;
-	background-color: #dc5656;
+	background-color: #000;
 }
 
 .cursor-dot-outline {
-	width: 40px;
-	height: 40px;
-	background-color: rgba(229, 128, 128, 0.5);
-}
-
-.links-container {
-	display: grid;
-	place-items: center;
-	grid-template-columns: repeat(2, 1fr);
-	row-gap: 40px;
+	width: 80px;
+	height: 80px;
+	background: rgba(255, 255, 255, 0.05);
+	box-shadow: 0 0 8px 0 rgb(0 0 0 / 60%);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border: 1px solid rgba(255, 255, 255, 0.18);
 }

@@ -1,13 +1,15 @@
-import Link from "next/link";
+import dynamic from "next/dynamic";
+const PixiTemplateNoSSR = dynamic(() => import("./pixi_temp"), {
+	ssr: false,
+});
 import { Nav } from "../components/nav/nav";
-
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
 export default function Home({ portfolio }) {
-	console.log(portfolio);
 	return (
 		<>
+			<PixiTemplateNoSSR />
 			<Nav />
 			<main className="top">
 				<div className="slider">

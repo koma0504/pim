@@ -2,20 +2,30 @@ import { client } from "../../lib/client";
 import Link from "next/link";
 import Image from "next/image";
 import { Nav } from "../../components/nav/nav";
+import { useState } from "react";
 
 export default function GalleryId({ gallery }) {
+	const [width, setWidth] = useState(gallery.photo.width);
+	const [height, setheight] = useState(gallery.photo.height);
+
 	return (
 		<>
 			<Nav />
-			<main className="detail">
-				<Image
-					src={gallery.photo.url}
-					alt={gallery.title}
-					width={gallery.photo.width}
-					height={gallery.photo.height}
-				/>
-				<h1>{gallery.title}</h1>
-				<p>{gallery.statement}</p>
+			<main className={`detail ${width > height ? "vertical" : "beside"}`}>
+				<div className="photo">
+					<Image
+						src={gallery.photo.url}
+						alt={gallery.title}
+						width={gallery.photo.width}
+						height={gallery.photo.height}
+						layout="responsive"
+					/>
+				</div>
+				<div className="text">
+					<h1>{gallery.title}</h1>
+					<p>{gallery.statement}</p>
+					<p>{gallery.category.name}</p>
+				</div>
 			</main>
 		</>
 	);
