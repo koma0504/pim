@@ -4,14 +4,21 @@ body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-family: "Playfair Display SC", serif;
+	font-weight: 100;
 	line-height: 1.6;
 	font-size: 18px;
 	word-break: break-all;
+	color: #fff;
+	background-color: #000;
 }
-
+a {
+	font-weight: 100;
+	line-height: 1.6;
+}
 * {
 	box-sizing: border-box;
-	// cursor: none;
+	cursor: none;
 }
 li,
 ul {
@@ -34,7 +41,10 @@ main.top {
 	display: grid;
 	place-items: center;
 	padding: 10vh 10vw;
-
+	.profile {
+		position: absolute;
+		z-index: 1;
+	}
 	.slider {
 		img {
 			object-fit: cover;
@@ -49,25 +59,24 @@ main.top {
 }
 .nav {
 	position: absolute;
-	left: 0;
-	display: grid;
-	place-items: center;
-	height: 100vh;
+	left: 4vw;
+	top: 7vw;
 	margin: 0;
-	width: 6vw;
-	background: rgba(255, 255, 255, 0.05);
-	box-shadow: 0 8px 10px 0 rgb(0 0 0 / 60%);
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
-	border: 1px solid rgba(255, 255, 255, 0.18);
 	transition: all 300ms ease;
 	z-index: 1;
 	h1 {
-		// transform: rotate(90deg);
 		transition: all 300ms ease;
 		margin: 0;
 		width: max-content;
-		writing-mode: vertical-lr;
+		font-size: 10vw;
+		letter-spacing: 3vw;
+		line-height: 0;
+		font-weight: 100;
+		-webkit-text-stroke: 1px #fff;
+		color: transparent;
+		&:hover {
+			color: #fff;
+		}
 	}
 	.menu {
 		display: none;
@@ -92,11 +101,12 @@ main.top {
 			}
 			a {
 				font-size: 50px;
-				color: #000;
 				width: 100%;
 				height: 100%;
 				transition: all 300ms ease;
 				display: block;
+				color: #fff;
+				text-decoration: none;
 			}
 		}
 	}
@@ -135,9 +145,8 @@ main.top {
 	}
 }
 .detail {
-	width: 94vw;
+	width: 100vw;
 	height: 100vh;
-	margin: 0 0 0 6vw;
 	display: grid;
 	place-items: center;
 	overflow: hidden;
@@ -183,9 +192,18 @@ main.top {
 .cursor-dot-outline {
 	width: 80px;
 	height: 80px;
-	background: rgba(255, 255, 255, 0.05);
-	box-shadow: 0 0 8px 0 rgb(0 0 0 / 60%);
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
-	border: 1px solid rgba(255, 255, 255, 0.18);
+	// background: rgba(255, 255, 255, 0.05);
+	// box-shadow: 0 0 8px 0 rgb(0 0 0 / 60%);
+	// backdrop-filter: blur(4px);
+	// -webkit-backdrop-filter: blur(4px);
+	border: 1px solid #fff;
+}
+.bg_noise {
+	background: url(../public/images/noise.gif);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.3;
+	pointer-events: none;
 }

@@ -10,11 +10,5 @@
     "files": [
       "static/chunks/components_Cursor_Cursor_jsx.js"
     ]
-  },
-  "index.jsx -> ./pixi_temp": {
-    "id": "./pages/pixi_temp.jsx",
-    "files": [
-      "static/chunks/pages_pixi_temp_jsx.js"
-    ]
   }
 }

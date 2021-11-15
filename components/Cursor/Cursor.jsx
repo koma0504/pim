@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 export const Cursor = () => {
+	const { route } = useRouter();
+
 	const delay = 18;
 
 	const dot = useRef(null);
@@ -100,7 +103,13 @@ export const Cursor = () => {
 	return (
 		<div>
 			<div ref={dotOutline} className="cursor-dot-outline"></div>
-			<div ref={dot} className="cursor-dot"></div>
+			<div ref={dot} className="cursor-dot">
+				{route === "/"
+					? route.replace("/", "top")
+					: route.match(/id/)
+					? route.replace("/[id]", "").replace("/", "")
+					: route.replace("/", "")}
+			</div>
 		</div>
 	);
 };
