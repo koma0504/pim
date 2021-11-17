@@ -1,7 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 
+import React, { useContext } from "react";
+import { HoverClick } from "../../pages/_app";
+
 export const Cursor = () => {
+	const { hover } = useContext(HoverClick);
+
 	const { route } = useRouter();
 
 	const delay = 18;
@@ -101,15 +106,11 @@ export const Cursor = () => {
 	};
 
 	return (
-		<div>
-			<div ref={dotOutline} className="cursor-dot-outline"></div>
-			<div ref={dot} className="cursor-dot">
-				{route === "/"
-					? route.replace("/", "top")
-					: route.match(/id/)
-					? route.replace("/[id]", "").replace("/", "")
-					: route.replace("/", "")}
+		<div className={hover}>
+			<div ref={dotOutline} className="cursor-dot-outline">
+				{hover}
 			</div>
+			<div ref={dot} className="cursor-dot"></div>
 		</div>
 	);
 };
