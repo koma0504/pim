@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 
 import React, { useContext } from "react";
-import { HoverClick } from "../../pages/_app";
+import { cursorHoverAction } from "../../pages/_app";
 
 export const Cursor = () => {
-	const { hover } = useContext(HoverClick);
+	const { hover } = useContext(cursorHoverAction);
 
 	const { route } = useRouter();
 
@@ -55,13 +55,13 @@ export const Cursor = () => {
 	};
 
 	const toggleCursorSize = () => {
-		if (cursorEnlarged.current) {
-			dot.current.style.transform = "translate(-50%, -50%) scale(0.75)";
-			dotOutline.current.style.transform = "translate(-50%, -50%) scale(1.5)";
-		} else {
-			dot.current.style.transform = "translate(-50%, -50%) scale(1)";
-			dotOutline.current.style.transform = "translate(-50%, -50%) scale(1)";
-		}
+		// if (cursorEnlarged.current) {
+		// 	dot.current.style.transform = "translate(-50%, -50%) scale(0.75)";
+		// 	dotOutline.current.style.transform = "translate(-50%, -50%) scale(1.5)";
+		// } else {
+		// 	dot.current.style.transform = "translate(-50%, -50%) scale(1)";
+		// 	dotOutline.current.style.transform = "translate(-50%, -50%) scale(1)";
+		// }
 	};
 
 	const mouseOverEvent = () => {
@@ -106,8 +106,11 @@ export const Cursor = () => {
 	};
 
 	return (
-		<div className={hover}>
-			<div ref={dotOutline} className="cursor-dot-outline">
+		<div>
+			<div
+				ref={dotOutline}
+				className={hover ? "cursor-dot-outline click" : "cursor-dot-outline"}
+			>
 				{hover}
 			</div>
 			<div ref={dot} className="cursor-dot"></div>

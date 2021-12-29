@@ -1,18 +1,14 @@
-// import dynamic from "next/dynamic";
-// const PixiTemplateNoSSR = dynamic(() => import("./pixi_temp"), {
-// 	ssr: false,
-// });
-import { Nav } from "../components/nav/nav";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+import { motion, useAnimation } from "framer-motion";
+import { PageTransition } from "../components/pageTransition/pageTransition";
 
 export default function Home({ portfolio }) {
 	return (
 		<>
-			{/* <PixiTemplateNoSSR /> */}
-			<Nav />
+			<PageTransition />
 			<main className="top">
-				<div className="profile">
+				<div className="info z_info">
 					<h1>pim's official site</h1>
 					<p>I'm photographer</p>
 					<p>giar : camera fuji X-4 lens　ZEISS </p>

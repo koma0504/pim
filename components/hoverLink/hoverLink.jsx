@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { HoverClick } from "../../pages/_app";
+import React, { useContext, memo } from "react";
+import { cursorHoverAction } from "../../pages/_app";
 
-export const HoverLink = ({ children }) => {
-	const { setHover } = useContext(HoverClick);
-
+export const HoverLink = memo(({ children }) => {
+	const { setHover } = useContext(cursorHoverAction);
 	return (
 		<span
 			className="hover"
@@ -13,4 +12,4 @@ export const HoverLink = ({ children }) => {
 			{children}
 		</span>
 	);
-};
+});

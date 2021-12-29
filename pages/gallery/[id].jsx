@@ -1,8 +1,7 @@
 import { client } from "../../lib/client";
-import Link from "next/link";
 import Image from "next/image";
-import { Nav } from "../../components/nav/nav";
 import { useState } from "react";
+import { PageTransition } from "../../components/pageTransition/pageTransition";
 
 export default function GalleryId({ gallery }) {
 	const [width, setWidth] = useState(gallery.photo.width);
@@ -10,7 +9,7 @@ export default function GalleryId({ gallery }) {
 
 	return (
 		<>
-			<Nav />
+			<PageTransition />
 			<main className={`detail ${width > height ? "vertical" : "beside"}`}>
 				<div className="photo">
 					<Image

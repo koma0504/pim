@@ -3,21 +3,25 @@ const Cursor = dynamic(
 	() => import("../components/Cursor/Cursor").then((mod) => mod.Cursor),
 	{ ssr: false }
 );
+import "../styles/destyle.css";
 import "../styles/global.scss";
 import "../styles/locomotive-scroll.css";
 import React, { useState } from "react";
 import Head from "next/head";
-export const HoverClick = React.createContext();
+import { AnimatePresence } from "framer-motion";
+import { Nav } from "../components/nav/nav";
+export const cursorHoverAction = React.createContext();
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, router }) {
 	const [hover, setHover] = useState();
-	const value = {
+	const HoverValue = {
 		hover,
 		setHover,
 	};
+
 	return (
 		<>
-			<HoverClick.Provider value={value}>
+			<cursorHoverAction.Provider value={HoverValue}>
 				<Cursor />
 				<Head>
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,9 +31,14 @@ export default function App({ Component, pageProps }) {
 						rel="stylesheet"
 					/>
 				</Head>
-				<div className="bg_noise"></div>
-				<Component {...pageProps} />
-			</HoverClick.Provider>
+				<div className="noise z_noise">
+					<div className="bg_noise"></div>
+				</div>
+				<Nav />
+				<AnimatePresence exitBeforeEnter>
+					<Component {...pageProps} key={router.route} />
+				</AnimatePresence>
+			</cursorHoverAction.Provider>
 		</>
 	);
 }

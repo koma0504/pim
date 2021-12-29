@@ -1,20 +1,38 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { HoverClick } from "../../pages/_app";
+import { memo, useState } from "react";
 import { HoverLink } from "../hoverLink/hoverLink";
-
-export const Nav = (props) => {
+import { MenuList } from "./menuList";
+export const Nav = memo((props) => {
 	const { route } = useRouter();
-	const [menuFlag, setmenuFlag] = useState(false);
-	const onClickMenu = () => {
-		setmenuFlag(!menuFlag);
+
+	//アニメーションの状態を作る
+	const navOpen = {
+		open: {
+			left: 0,
+		},
+		closed: {
+			left: "-100vw",
+		},
 	};
+	const menuOpen = {
+		open: {
+			x: 200,
+		},
+		closed: {
+			x: -400,
+		},
+	};
+	//メニューの状態を作る
+	const [isOpne, setIsOpen] = useState(false);
+	//クリックしてstateを変化させる場所
+	//stateが変化したら見た目が変わる場所
 	return (
 		<>
-			<nav className={menuFlag ? "nav opne" : "nav"} onClick={onClickMenu}>
+			<nav className={isOpne ? "nav z_nav is_open" : "nav z_nav"}>
 				<HoverLink>
-					<h1>
+					<h1 className="z_h1" onClick={() => setIsOpen(!isOpne)}>
 						{route === "/"
 							? route.replace("/", "top")
 							: route.match(/id/)
@@ -22,40 +40,30 @@ export const Nav = (props) => {
 							: route.replace("/", "")}
 					</h1>
 				</HoverLink>
-				<ul className="menu">
-					<li>
-						<HoverLink>
-							<Link href="/">
-								<a>top</a>
-							</Link>
-						</HoverLink>
-					</li>
-					<li>
-						<HoverLink>
-							<Link href="/gallery">
-								<a>gallery</a>
-							</Link>
-						</HoverLink>
-					</li>
-					<li>
-						<HoverLink>
-							<Link href="/profile">
-								<a>profile</a>
-							</Link>
-						</HoverLink>
-					</li>
-					<li>
-						<HoverLink>
-							<Link href="/contact">
-								<a>contact</a>
-							</Link>
-						</HoverLink>
-					</li>
+				<motion.ul
+					className="menu"
+					variants={navOpen}
+					animate={isOpne ? "open" : "closed"}
+					transition={{ duration: 0.6 }}
+				>
+					{MenuList.map((menu) => (
+						<motion.li
+							key={menu}
+							whileHover={{ translateX: 20 }}
+							onClick={() => setIsOpen(!isOpne)}
+						>
+							<HoverLink>
+								<Link href={menu === "top" ? "/" : `/${menu}`}>
+									<a>{menu}</a>
+								</Link>
+							</HoverLink>
+						</motion.li>
+					))}
 					<HoverLink>
-						<p>close</p>
+						<p onClick={() => setIsOpen(!isOpne)}>close</p>
 					</HoverLink>
-				</ul>
+				</motion.ul>
 			</nav>
 		</>
 	);
-};
+});

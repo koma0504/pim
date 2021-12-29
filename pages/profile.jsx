@@ -1,17 +1,34 @@
-import { useLocomotiveScroll } from "react-locomotive-scroll";
-import Link from "next/link";
-import Image from "next/image";
 import { Nav } from "../components/nav/nav";
-import styled from "styled-components";
+import { PageTransition } from "../components/pageTransition/pageTransition";
 
 export default function gallery({ gallery }) {
-	const { scroll } = useLocomotiveScroll();
-
-	console.log(gallery);
 	return (
 		<>
 			<Nav />
-			<section className="profile">profile</section>
+			<main className="profile">
+				<div className="profile_image">
+					<img src="/images/profile.jpg" />
+				</div>
+				<div className="profile_text">
+					<div className="name">
+						<p>name</p>
+						<p>pim</p>
+					</div>
+					<div className="camera">
+						<p>camera</p>
+						<p>fuji</p>
+					</div>
+					<div className="lens">
+						<p>lenz</p>
+						<p>fuji</p>
+					</div>
+					<div className="contect">
+						<p>contect</p>
+						<a href="">mail</a>
+					</div>
+				</div>
+			</main>
+			<PageTransition />
 		</>
 	);
 }
