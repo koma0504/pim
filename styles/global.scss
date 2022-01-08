@@ -39,8 +39,9 @@ a:hover {
 main.top {
 	width: 100vw;
 	height: 100vh;
-	display: grid;
-	place-items: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 10vh 10vw;
 	.info {
 		position: absolute;

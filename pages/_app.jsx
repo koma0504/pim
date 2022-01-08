@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { AnimatePresence } from "framer-motion";
 import { Nav } from "../components/nav/nav";
+import { isMobile } from "react-device-detect";
 export const cursorHoverAction = React.createContext();
 
 export default function App({ Component, pageProps, router }) {
@@ -22,7 +23,8 @@ export default function App({ Component, pageProps, router }) {
 	return (
 		<>
 			<cursorHoverAction.Provider value={HoverValue}>
-				<Cursor />
+				{isMobile ? "" : <Cursor />}
+
 				<Head>
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
