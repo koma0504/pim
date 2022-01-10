@@ -1,8 +1,15 @@
+@charset "UTF-8";
+@media screen and (width: 600px) {
+  body {
+    font-size: 500px !important;
+  }
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-family: "Playfair Display SC", serif;
   font-weight: 100;
   line-height: 1.6;
@@ -10,6 +17,7 @@ body {
   word-break: break-all;
   color: #fff;
   background-color: #000;
+  overscroll-behavior-y: none;
 }
 
 a {
@@ -41,14 +49,19 @@ a:hover {
 main.top {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10vh 10vw;
 }
 
-main.top .profile {
+main.top .info {
   position: absolute;
-  z-index: 1;
+}
+
+main.top .info h1,
+main.top .info p {
+  padding: 0 12vw;
 }
 
 main.top .slider img {
@@ -64,23 +77,30 @@ main.top img {
 
 .nav {
   position: absolute;
-  left: 4vw;
-  top: 7vw;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  transition: all 300ms ease;
-  z-index: 1;
+  pointer-events: none;
+}
+
+.nav.is_open {
+  pointer-events: auto;
+  overflow: hidden;
 }
 
 .nav h1 {
-  transition: all 300ms ease;
-  margin: 0;
+  position: relative;
   width: max-content;
-  font-size: 10vw;
+  padding: 6vw 4vw;
+  margin: 0;
+  font-size: clamp(32px, 10vw, 40vw);
+  font-weight: 100;
   letter-spacing: 3vw;
   line-height: 0;
-  font-weight: 100;
-  -webkit-text-stroke: 1px #fff;
   color: transparent;
+  pointer-events: auto;
+  transition: all 300ms ease;
+  -webkit-text-stroke: 1px #fff;
 }
 
 .nav h1:hover {
@@ -88,39 +108,34 @@ main.top img {
 }
 
 .nav .menu {
-  display: none;
-  opacity: 0;
-  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: #1b5618;
+  padding: 10vw 4vw;
 }
 
-.nav.opne {
-  width: 24vw;
-  transition: all 300ms ease;
+.nav li {
+  width: fit-content;
 }
 
-.nav.opne h1 {
-  display: none;
-}
-
-.nav.opne .menu {
-  opacity: 1;
-  visibility: visible;
+.nav a {
   display: block;
-}
-
-.nav.opne .menu li:hover a {
-  transform: translateX(2vw);
-  transition: all 300ms ease;
-}
-
-.nav.opne .menu a {
-  font-size: 50px;
-  width: 100%;
+  width: fit-content;
   height: 100%;
   transition: all 300ms ease;
-  display: block;
   color: #fff;
+  font-size: clamp(32px, 7vw, 80px);
+  white-space: nowrap;
   text-decoration: none;
+}
+
+.nav p {
+  margin: 0;
+  font-size: clamp(16px, 5vw, 20vw);
+  color: #9c080a;
 }
 
 .gallery {
@@ -128,13 +143,23 @@ main.top img {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  /* IE, Edge 対応 */
+  scrollbar-width: none;
+  /* Firefox 対応 */
+}
+
+.gallery::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
 }
 
 .gallery .image_list {
   display: flex;
   align-items: center;
-  height: 100vh;
-  margin: 0 0 0 9vw;
+  width: 100%;
+  margin: 0 0 0 240px;
   gap: 3vw;
 }
 
@@ -162,12 +187,21 @@ main.top img {
   object-fit: cover;
 }
 
+.gallery .scroll_arrow {
+  position: fixed;
+  right: 32px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;
+}
+
 .detail {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: grid;
   place-items: center;
-  overflow: hidden;
 }
 
 .detail.beside {
@@ -176,13 +210,12 @@ main.top img {
 }
 
 .detail.beside .photo {
-  height: 100vh;
-  width: 50vw;
+  width: 100%;
 }
 
 .detail.vertical .photo {
-  height: 50vh;
-  width: 80%;
+  width: 100%;
+  padding: 14vw 10vw 0 10vw;
 }
 
 .detail .text {
@@ -195,23 +228,48 @@ main.top img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 50%;
   opacity: 1;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   z-index: 99999;
+  transform: translate(-50%, -50%);
 }
 
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background-color: #000;
+  background-color: #fff;
 }
 
 .cursor-dot-outline {
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
+  font-size: 1px;
   border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  word-break: keep-all;
+  transition: width 300ms, height 300ms, border 300ms, font-size 300ms, font-weight 300ms, scale 300ms ease;
+}
+
+.cursor-dot-outline.click {
+  width: 150px;
+  height: 150px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 4px solid #fff;
+  letter-spacing: 0.8vw;
+  color: #fff;
+  transition: width 300ms, height 300ms, border 300ms, font-size 300ms, font-weight 300ms, scale 300ms ease;
+}
+
+.noise {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .bg_noise {
@@ -219,8 +277,53 @@ main.top img {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.page_transition_overlay {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: #1b5618;
+}
+
+.z_info {
   z-index: 1;
-  opacity: 0.3;
-  pointer-events: none;
+}
+
+.z_nav {
+  z-index: 2;
+}
+
+.z_page_transition_overlay,
+.z_h1 {
+  z-index: 3;
+}
+
+.z_noise {
+  z-index: 4;
+}
+
+.profile .profile_image img {
+  object-fit: cover;
+  width: 100%;
+  height: 50vh;
+}
+
+.profile .profile_text {
+  width: 50%;
+  height: 50vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile .profile_text .name,
+.profile .profile_text .camera,
+.profile .profile_text .lens,
+.profile .profile_text .contect {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
 }
 /*# sourceMappingURL=global.css.map */

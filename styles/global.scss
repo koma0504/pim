@@ -1,3 +1,13 @@
+@mixin sp {
+	@media screen and (max-width: 1024px) {
+		@content;
+	}
+}
+@media screen and (width: 600px) {
+	body {
+		font-size: 500px !important;
+	}
+}
 html,
 body {
 	padding: 0;
@@ -45,6 +55,13 @@ main.top {
 	padding: 10vh 10vw;
 	.info {
 		position: absolute;
+		text-align: center;
+		h1,
+		p {
+			font-size: 3.4vw;
+			padding: 0 12vw;
+			filter: drop-shadow(2px 4px 6px black);
+		}
 	}
 	.slider {
 		img {
@@ -133,7 +150,8 @@ main.top {
 		margin: 0 0 0 240px;
 		gap: 3vw;
 		.image_item {
-			min-width: 20vw;
+			min-width: 40vw;
+			display: block;
 			.title,
 			.statement {
 				text-overflow: ellipsis;
@@ -281,8 +299,7 @@ main.top {
 		.lens,
 		.contect {
 			display: grid;
-			grid-template-columns: 1fr 1fr;
-			justify-items: center;
+			grid-template-columns: 1fr 2fr;
 		}
 	}
 }

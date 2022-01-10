@@ -16,15 +16,18 @@ export default function gallery({ gallery }) {
 					</div>
 					<div className="camera">
 						<p>camera</p>
-						<p>fuji</p>
+						<p>
+							Fujifilm XT-1 <br />
+							FOCA Universal
+						</p>
 					</div>
 					<div className="lens">
-						<p>lenz</p>
-						<p>fuji</p>
+						<p>lens</p>
+						<p>Carl Zeiss Touit 32mm F1.8</p>
 					</div>
 					<div className="contect">
 						<p>contect</p>
-						<a href="">mail</a>
+						<a href="mailto:papimupepo@gmail.com">papimupepo@gmail.com</a>
 					</div>
 				</div>
 			</main>

@@ -23,7 +23,7 @@ export default function gallery({ gallery }) {
 											alt={gallery.title}
 											width={gallery.photo.width}
 											height={gallery.photo.height}
-											layout="fixed"
+											layout="responsive"
 										/>
 									</li>
 								</a>

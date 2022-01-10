@@ -1,2 +1,7 @@
+サイトURL
+https://pim.vercel.app/
+
+管理画面URL
+https://app.microcms.io/signin
 papimupepo@gmail.com
 Pimpassadmin0

@@ -11,8 +11,7 @@ export default function Home({ portfolio }) {
 				<div className="info z_info">
 					<h1>pim's official site</h1>
 					<p>I'm photographer</p>
-					<p>giar : camera fuji X-4 lens　ZEISS </p>
-					<p>giar : camera fuji X-4 lens　ZEISS </p>
+					<p>je ne sais quoi</p>
 				</div>
 				<div className="slider">
 					<Splide
@@ -24,13 +23,19 @@ export default function Home({ portfolio }) {
 						}}
 					>
 						<SplideSlide>
-							<img src="./images/image01.jpg" alt="Image 1" />
+							<img src="./images/mv_01.jpg" alt="Image 1" />
 						</SplideSlide>
 						<SplideSlide>
-							<img src="./images/image01.jpg" alt="Image 1" />
+							<img src="./images/mv_02.jpg" alt="Image 2" />
 						</SplideSlide>
 						<SplideSlide>
-							<img src="./images/image01.jpg" alt="Image 1" />
+							<img src="./images/mv_03.jpg" alt="Image 3" />
+						</SplideSlide>
+						<SplideSlide>
+							<img src="./images/mv_04.jpg" alt="Image 4" />
+						</SplideSlide>
+						<SplideSlide>
+							<img src="./images/mv_05.jpg" alt="Image 5" />
 						</SplideSlide>
 					</Splide>
 				</div>
